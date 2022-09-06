@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: grpc-server-deployment
+    labels:
+        app: grpc-server
+spec:
+    replicas: 5
+    selector:
+        matchLabels:
+            app: grpc-server
+    template:
+        metadata:
+            labels:
+                app: grpc-server
+        spec:
+            containers:
+                - name: grpc-server
+                  image: 111111111111.dkr.ecr.us-east-2.amazonaws.com/wfeng-backend:202208291402
+                  # imagePullPolicy: Never

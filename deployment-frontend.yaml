@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: grpc-client-deployment
+    labels:
+        app: grpc-client
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: grpc-client
+    template:
+        metadata:
+            labels:
+                app: grpc-client
+        spec:
+            containers:
+                - name: grpc-client
+                  image: 111111111111.dkr.ecr.us-east-2.amazonaws.com/wfeng-frontend:202208291405
+                  # imagePullPolicy: Never
+                  env:
+                      - name: quarkus.grpc.clients.hello.host
+                        value: grpc-server-service
